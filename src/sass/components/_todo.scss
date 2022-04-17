@@ -16,7 +16,6 @@
     @include lg {
       gap: 20rem;
       margin-top: 4.7rem;
-      
     }
 
     h1 {
@@ -44,7 +43,7 @@ header {
 
 .card__wrapper {
   @include flexDisplay(column);
- 
+
   // border:2px solid black;
   border-radius: 8px;
   perspective: 100;
@@ -52,19 +51,19 @@ header {
   margin-top: 2rem;
   min-width: 200px;
   justify-content: flex-start;
-  gap:1.3rem;
+  gap: 1.3rem;
 
   @include lg {
-    gap:2rem;
+    gap: 2rem;
     min-width: 540px;
   }
 }
-.card__top{
+.card__top {
   @include flexDisplay(row);
   justify-content: flex-start;
   align-items: center;
-  form{
-    width:100%
+  form {
+    width: 100%;
   }
 }
 
@@ -79,12 +78,17 @@ header {
   padding-left: 3.2rem;
   font-size: 0.8rem;
   font-family: $text-font;
+  caret-color: #6441be;
+  
   @include lg {
     min-width: 100%;
     min-height: 60px;
     font-size: 1rem;
-    padding-left:4.3rem
+    padding-left: 4.3rem;
   }
+}
+#input-box:focus{
+  outline: none;
 }
 
 .ring {
@@ -94,68 +98,52 @@ header {
   width: 23px;
   height: 23px;
   margin-left: 18px;
-  @include lg{
-    width:25px;
-    height:25px;
+  @include lg {
+    width: 25px;
+    height: 25px;
   }
- 
 }
 // footer
-.bottom__container{
-  @include flexDisplay(column); 
-  text-align:center;
- 
-
-}
-
-.bottom__wrapper{
+.bottom__container {
   @include flexDisplay(column);
   text-align: center;
-  gap:2rem;
- 
-// sm screen
-footer{
-  @include flexDisplay(row);
-  border-radius: 8px  ;
-  height:50px;
-  justify-content: center;
-  align-items: center;
-  background-color: $very-dark-desaturated-blue;
-  font-size: 0.8rem;
-  font-family: $text-font;
-  gap:3rem;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-  
-
- 
-  p{
-   @include greyOpacText;
-   font-weight:700
-   
-  }
-  p:hover{
-    color:$link-blue;
-    font-weight:700
-  
-
-  }
-
-};
-.bottom__text{
-  padding-bottom:2rem;
-  p{
- @include greyOpacText;
- font-family: $text-font;
- font-size: 13px;
- font-weight: 700;
- cursor:auto;
-
-  }
 }
 
+.bottom__wrapper {
+  @include flexDisplay(column);
+  text-align: center;
+  gap: 2rem;
+
+  // sm screen
+  footer {
+    @include flexDisplay(row);
+    border-radius: 8px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: $very-dark-desaturated-blue;
+    font-size: 0.8rem;
+    font-family: $text-font;
+    gap: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
+    p {
+      @include greyOpacText;
+      font-weight: 700;
+    }
+    p:hover {
+      color: $link-blue;
+      font-weight: 700;
+    }
+  }
+  .bottom__text {
+    padding-bottom: 2rem;
+    p {
+      @include greyOpacText;
+      font-family: $text-font;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: auto;
+    }
+  }
 }
-
-
-  
-
-

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Todo from "./components/Todo";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 

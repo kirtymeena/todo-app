@@ -39,8 +39,13 @@ const todoListSlice = createSlice({
 
       state.items--;
     },
+
+    editTodo:(state,action)=>{
+      const index = state.list.findIndex(t=>t.id===action.payload.id);
+      state.list[index].todo = action.payload.todo;
+    }
   },
 });
 
-export const { addTodo, toggleComplete, deleteTodo } = todoListSlice.actions;
+export const { addTodo, toggleComplete, deleteTodo,editTodo } = todoListSlice.actions;
 export default todoListSlice.reducer;

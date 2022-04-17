@@ -48,6 +48,25 @@
             box-shadow: rgb(177, 173, 173) 0px 22px 70px 4px;
 
         }
+        .footer__mobile{
+            background-color: $very-light-gray;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
+            p:hover{
+                color:$very-dark-grayish-blue;opacity: 100%;
+            }
+        }
+        .isEditing{
+            // border:none;
+            background-color: $very-light-gray;
+            font-size: 0.8rem;
+            @include lg{
+                font-size: 1rem;
+            }
+            font-family: $text-font;
+            color:$very-dark-grayish-blue;
+            font-weight: 700;
+          }
         
 
     }

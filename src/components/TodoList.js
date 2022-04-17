@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, toggleComplete } from "../redux/TodoListSlice";
+import { deleteTodo, editTodo, toggleComplete } from "../redux/TodoListSlice";
 import { MdModeEdit } from "react-icons/md";
 
 const TodoList = () => {
@@ -13,26 +13,73 @@ const TodoList = () => {
     completed: false,
     all: false,
   });
-
+  const [editIcon, setEditIcon] = useState(false);
+  const [edit, setEdit] = useState("");
+  const [editedTodo, setEditedTodo] = useState("");
+  const [_id, setId] = useState();
+  const dragItem = useRef();
+  const dragOver = useRef()
   const itemLeft = useSelector((state) => state.todo.items);
   const dispatch = useDispatch();
 
+  // toogle completed todo
   const handleChecked = (uid, completed) => {
     console.log("toggled");
     console.log(uid);
     dispatch(toggleComplete({ id: uid, completed: !completed }));
   };
+
+  // delete todo
   const handleDelete = (id) => {
     dispatch(deleteTodo({ id: id }));
     console.log("sdfj");
   };
 
+  // handle edit icon
+  const handleEditIcon = () => {
+    setEditIcon(!editIcon);
+  };
+
+  const showEdit = (id) => {
+    setEdit("edit");
+    setId(id);
+  };
+
+
+  // drag feature
+  const dragStart = (e,pos)=>{
+    dragItem.current = pos;
+    console.log(e.target)
+  }
+
+  const dragEnter = (e,pos)=>{
+    dragOver.current = pos;
+    console.log(e.target.innerHTML)
+  }
+
+  // reshuffle the list
+  const drop = (e)=>{
+    const copyListItems = [...todos];
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current,1);
+    copyListItems.splice(dragOver.current,0,dragItemContent);
+    dragItem.current = null;
+    dragOver.current = null;
+    setTodo(copyListItems)
+
+  }
+
+
   useEffect(() => {
-    console.log("completed", todos);
+    console.log("list", todos);
     if (links.active === false && links.completed === false) {
       setTodo(todoItems);
+    } else if (links.active === true && links.completed === false) {
+      setTodo(ActiveTodo);
+    } else if (links.active === false && links.completed === true) {
+      setTodo(completedTodo);
     }
-  }, [todoItems, todos, links,completedTodo,ActiveTodo]);
+  }, [todoItems, todos, links, completedTodo, ActiveTodo, edit]);
 
   return (
     <div className="todo__card">
@@ -40,10 +87,19 @@ const TodoList = () => {
         <div className="drag-n-drop">
           <div className="dnd-group">
             {todos !== undefined &&
-              todos.map((t) => (
+              todos !== null &&
+              todos.map((t, index) => (
                 // draggble item
 
-                <div className={"todo__list"} key={t.id}>
+                <div
+                  className={"todo__list"}
+                  key={t.id}
+                  draggable
+                  onDragStart={(e) => dragStart(e, index)}
+                  onDragEnter={e=>dragEnter(e,index)}
+                  onDragEnd={drop}
+                  onDragOver={e=>e.preventDefault()}
+                >
                   {/* checkbox */}
                   <div className="checkbox__btn">
                     <input
@@ -59,24 +115,47 @@ const TodoList = () => {
                     <div
                       className={`text__wrap ${t.completed ? "checked" : ""}`}
                     >
-                      <p>{t.todo}</p>
-                      
+                      {edit === "edit" && t.id === _id && editIcon ? (
+                        <input
+                          className="isEditing"
+                          type="text"
+                          defaultValue={t.todo}
+                          onChange={(e) => setEditedTodo(e.target.value)}
+                          onKeyPress={(e) => {
+                            if (e.key === "Enter") {
+                              dispatch(
+                                editTodo({ id: t.id, todo: editedTodo })
+                              );
+                              setEdit("");
+                            }
+                          }}
+                        />
+                      ) : (
+                        <p>{t.todo}</p>
+                      )}
                     </div>
                   </div>
                   <div className="cross">
-                    {/* <MdModeEdit size={20}/> */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      onClick={() => handleDelete(t.id)}
-                    >
-                      <path
-                        fill="#494C6B"
-                        fillRule="evenodd"
-                        d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+                    {editIcon ? (
+                      <MdModeEdit
+                        size={20}
+                        style={{ color: "#dea40d" }}
+                        onClick={() => showEdit(t.id)}
                       />
-                    </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        onClick={() => handleDelete(t.id)}
+                      >
+                        <path
+                          fill="#494C6B"
+                          fillRule="evenodd"
+                          d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+                        />
+                      </svg>
+                    )}
                   </div>
                 </div>
               ))}
@@ -85,6 +164,7 @@ const TodoList = () => {
 
         {/* bottom links */}
         <div className="todo__list todo_list2">
+          {/* large screen footer */}
           <div className="footer1">
             <div className="item1">
               <p>{itemLeft} items left</p>
@@ -130,15 +210,14 @@ const TodoList = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="middleItems_mobile">
-              
-            </div> */}
+
             <div className="item2">
-              <p>Close Completed</p>
+              <p onClick={handleEditIcon}>{editIcon ? "Close" : "Edit todo"}</p>
             </div>
           </div>
         </div>
       </div>
+      {/* small screen footer */}
       <div className="footer__mobile">
         <div>
           <p

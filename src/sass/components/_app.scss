@@ -13,23 +13,14 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  border:2px solid green;
+  
   @include lg {
     grid-template-rows: 1fr;
   }
  
 }
 
-// .track-1{
-//     display: flex;
-//     h1{
-//         font-size:2rem;
-//         font-weight: 300;
-//         margin:2.7rem 0 0 0.8rem;
-//         letter-spacing: 6px;
 
-//     }
-// }
 
 // Dark theme
 .dark {
