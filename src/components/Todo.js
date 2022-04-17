@@ -71,7 +71,7 @@ const Todo = () => {
           <div className="ring"></div>
           <form onSubmit={handleSubmit}>
             <input
-              value={todo.todo}
+              // value={todo.todo}
               onChange={(e) =>
                 setTodo({ todo: e.target.value, completed: false })
               }

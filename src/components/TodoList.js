@@ -47,27 +47,27 @@ const TodoList = () => {
 
 
   // drag feature
-  const dragStart = (e,pos)=>{
-    dragItem.current = pos;
-    console.log(e.target)
-  }
+  // const dragStart = (e,pos)=>{
+  //   dragItem.current = pos;
+  //   console.log(e.target)
+  // }
 
-  const dragEnter = (e,pos)=>{
-    dragOver.current = pos;
-    console.log(e.target.innerHTML)
-  }
+  // const dragEnter = (e,pos)=>{
+  //   dragOver.current = pos;
+  //   console.log(e.target.innerHTML)
+  // }
 
-  // reshuffle the list
-  const drop = (e)=>{
-    const copyListItems = [...todos];
-    const dragItemContent = copyListItems[dragItem.current];
-    copyListItems.splice(dragItem.current,1);
-    copyListItems.splice(dragOver.current,0,dragItemContent);
-    dragItem.current = null;
-    dragOver.current = null;
-    setTodo(copyListItems)
+  // // reshuffle the list
+  // const drop = (e)=>{
+  //   const copyListItems = [...todos];
+  //   const dragItemContent = copyListItems[dragItem.current];
+  //   copyListItems.splice(dragItem.current,1);
+  //   copyListItems.splice(dragOver.current,0,dragItemContent);
+  //   dragItem.current = null;
+  //   dragOver.current = null;
+  //   setTodo(copyListItems)
 
-  }
+  // }
 
 
   useEffect(() => {
@@ -95,10 +95,10 @@ const TodoList = () => {
                   className={"todo__list"}
                   key={t.id}
                   draggable
-                  onDragStart={(e) => dragStart(e, index)}
-                  onDragEnter={e=>dragEnter(e,index)}
-                  onDragEnd={drop}
-                  onDragOver={e=>e.preventDefault()}
+                  // onDragStart={(e) => dragStart(e, index)}
+                  // onDragEnter={e=>dragEnter(e,index)}
+                  // onDragEnd={drop}
+                  // onDragOver={e=>e.preventDefault()}
                 >
                   {/* checkbox */}
                   <div className="checkbox__btn">
