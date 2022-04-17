@@ -217,13 +217,14 @@ input[type="checkbox"] {
 
 .footer__mobile {
   @include flexDisplay(row);
+  
   font-size: 13px;
   color: $dark-grayish-blue;
   font-family: $text-font;
   font-weight: 700;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   min-height: 54px;
   border-radius: 8px;
   background-color: $very-dark-desaturated-blue;
