@@ -13,7 +13,7 @@ const Todo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (todo.todo.value.length===0) {
+    if (todo.todo.trim().length>0) {
       dispatch(
         addTodo({
           todo: todo.todo,
