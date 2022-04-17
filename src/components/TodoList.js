@@ -119,7 +119,7 @@ const TodoList = () => {
                         <input
                           className="isEditing"
                           type="text"
-                          value={t.todo}
+                          defaultValue={t.todo}
                           onChange={(e) => setEditedTodo(e.target.value)}
                           onKeyPress={(e) => {
                             if (e.key === "Enter") {
