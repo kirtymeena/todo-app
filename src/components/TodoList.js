@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo, editTodo, toggleComplete } from "../redux/TodoListSlice";
 import { MdModeEdit } from "react-icons/md";
@@ -17,8 +17,8 @@ const TodoList = () => {
   const [edit, setEdit] = useState("");
   const [editedTodo, setEditedTodo] = useState("");
   const [_id, setId] = useState();
-  // const dragItem = useRef();
-  // const dragOver = useRef()
+  const dragItem = useRef();
+  const dragOver = useRef()
   const itemLeft = useSelector((state) => state.todo.items);
   const dispatch = useDispatch();
 
@@ -47,27 +47,27 @@ const TodoList = () => {
 
 
   // drag feature
-  // const dragStart = (e,pos)=>{
-  //   dragItem.current = pos;
-  //   console.log(e.target)
-  // }
+  const dragStart = (e,pos)=>{
+    dragItem.current = pos;
+    console.log(e.target)
+  }
 
-  // const dragEnter = (e,pos)=>{
-  //   dragOver.current = pos;
-  //   console.log(e.target.innerHTML)
-  // }
+  const dragEnter = (e,pos)=>{
+    dragOver.current = pos;
+    console.log(e.target.innerHTML)
+  }
 
-  // // reshuffle the list
-  // const drop = (e)=>{
-  //   const copyListItems = [...todos];
-  //   const dragItemContent = copyListItems[dragItem.current];
-  //   copyListItems.splice(dragItem.current,1);
-  //   copyListItems.splice(dragOver.current,0,dragItemContent);
-  //   dragItem.current = null;
-  //   dragOver.current = null;
-  //   setTodo(copyListItems)
+  // reshuffle the list
+  const drop = (e)=>{
+    const copyListItems = [...todos];
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current,1);
+    copyListItems.splice(dragOver.current,0,dragItemContent);
+    dragItem.current = null;
+    dragOver.current = null;
+    setTodo(copyListItems)
 
-  // }
+  }
 
 
   useEffect(() => {
@@ -94,11 +94,11 @@ const TodoList = () => {
                 <div
                   className={"todo__list"}
                   key={t.id}
-                  // draggable
-                  // onDragStart={(e) => dragStart(e, index)}
-                  // onDragEnter={e=>dragEnter(e,index)}
-                  // onDragEnd={drop}
-                  // onDragOver={e=>e.preventDefault()}
+                  draggable
+                  onDragStart={(e) => dragStart(e, index)}
+                  onDragEnter={e=>dragEnter(e,index)}
+                  onDragEnd={drop}
+                  onDragOver={e=>e.preventDefault()}
                 >
                   {/* checkbox */}
                   <div className="checkbox__btn">

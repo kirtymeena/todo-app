@@ -98,7 +98,7 @@ input[type="checkbox"] {
 
 .checkbox__btn label:after {
   @include lg {
-    margin-left: 4.8px;
+    margin-left: 4px;
     margin-top: 5px;
 
     transform: scale(0.6);
@@ -182,6 +182,7 @@ input[type="checkbox"] {
   font-size: 13px;
   color: $dark-grayish-blue;
   gap: 11rem;
+
   
 
   .middle__items {
@@ -189,7 +190,7 @@ input[type="checkbox"] {
   }
 
   @include lg {
-    gap: 5rem;
+    gap: 7rem;
     .middle__items {
       @include flexDisplay(row);
       flex-wrap: wrap;
