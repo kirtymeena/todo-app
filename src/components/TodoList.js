@@ -94,7 +94,7 @@ const TodoList = () => {
                 <div
                   className={"todo__list"}
                   key={t.id}
-                  draggable
+                  // draggable
                   // onDragStart={(e) => dragStart(e, index)}
                   // onDragEnter={e=>dragEnter(e,index)}
                   // onDragEnd={drop}
@@ -119,7 +119,7 @@ const TodoList = () => {
                         <input
                           className="isEditing"
                           type="text"
-                          defaultValue={t.todo}
+                          value={t.todo}
                           onChange={(e) => setEditedTodo(e.target.value)}
                           onKeyPress={(e) => {
                             if (e.key === "Enter") {
