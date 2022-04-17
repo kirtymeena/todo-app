@@ -1,0 +1,231 @@
+@use "../utils/mixin" as *;
+@use "../utils/variables" as *;
+@use "../utils/breakpoints" as *;
+
+.todo__card {
+  @include flexDisplay(column);
+  gap:3rem;
+
+  .checkbox__btn {
+    margin-left: 18px;
+    position: relative;
+    // display: flex;
+    // align-items: center;
+    // bordeR:2px solid red;
+
+    #checkbox {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.todo__wrapper {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.todo__list {
+  // border:2px solid red;
+  @include lg {
+    // gap between text and checkbox
+    gap: 2rem;
+    font-size: 1rem;
+  }
+  display: flex;
+  flex-flow: wrap;
+  min-height: 58px;
+  border-bottom: 1px solid $very-dark-grayish-blue2;
+  align-items: center;
+  gap: 1.3rem;
+  background-color: $very-dark-desaturated-blue;
+  font-size: 0.8rem;
+  font-family: $text-font;
+  color: $light-grayish-blue;
+  cursor: move;
+
+  p {
+    opacity: 70%;
+    font-weight: 700;
+    align-self: center;
+  }
+
+  .todo__task {
+    display: flex;
+
+    // break to next line overflowing text
+    .text__wrap {
+      width: 220px;
+
+      
+
+      @include lg {
+        width: 380px;
+      }
+    }
+  }
+}
+.checked {
+  text-decoration: line-through;
+  color: $dark-grayish-blue;
+  opacity: 40%;
+}
+
+input[type="checkbox"]:checked .text-wrap {
+  text-decoration: line-through;
+}
+
+// custom checkbox
+input[type="checkbox"] {
+  visibility: hidden;
+}
+.checkbox__btn label {
+  @include lg {
+    height: 25px;
+    width: 25px;
+    // bordeR:2 px solid red
+  }
+
+  // background-color: $very-dark-desaturated-blue;
+
+  border-radius: 50%;
+  border: 2px solid $very-dark-grayish-blue;
+  cursor: pointer;
+  height: 23px;
+  width: 23px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.checkbox__btn:hover label {
+  border: 2px solid $dark-grayish-blue;
+}
+
+.checkbox__btn label:after {
+  @include lg {
+    margin-left: 4.8px;
+    margin-top: 5px;
+
+    transform: scale(0.6);
+  }
+  border: 2px solid $very-dark-grayish-blue;
+  background: url("../../images/icon-check.svg");
+  margin-top: 4px;
+  margin-left: 3px;
+  transform: scale(0.5);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 50%;
+  border: none;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 20px;
+  width: 20px;
+  opacity: 0;
+  top: -2px;
+  left: -1px;
+  position: absolute;
+}
+
+.checkbox__btn input[type="checkbox"]:checked + label {
+  background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: none;
+}
+
+.checkbox__btn input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+// cross icon
+.cross {
+  transform: scale(0.7);
+  svg {
+    cursor: pointer;
+  }
+  svg:hover {
+    fill: #777886;
+  }
+}
+
+// footer
+.todo_list2 {
+  justify-content: center;
+  .item2 {
+    p {
+      cursor: pointer;
+    }
+    p:hover {
+      cursor: pointer;
+      color: $link-blue;
+    }
+  }
+}
+
+.footer1 {
+  @include flexDisplay(row);
+  font-size: 13px;
+  color: $dark-grayish-blue;
+  gap: 7rem;
+
+  
+  .middle__items {
+    display: none;
+    
+}
+
+  @include lg {
+    gap: 5rem;
+    .middle__items {
+      @include flexDisplay(row);
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: $dark-grayish-blue;
+      font-size: 13px;
+      font-weight: 700;
+      p {
+        cursor: pointer;
+      }
+      p:hover {
+        color: whitesmoke;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+
+.footer__mobile{
+  @include flexDisplay(row);
+  border:2px solid red;
+  font-size: 13px;
+  color:$dark-grayish-blue;
+  font-family: $text-font;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  gap:2rem;
+  min-height:54px ;
+  border-radius: 8px ;
+  background-color:$very-dark-desaturated-blue;
+  p{
+    opacity: 60%;
+    cursor: pointer;
+  }
+  p:hover{
+    color:white
+  }
+ 
+}
+
+@include lg{
+.footer__mobile{
+  display: none;
+}}
+
+// DRAGABLE ITEMS
+// .drag-n-drop{
+//   border:2px solid pink
+// }

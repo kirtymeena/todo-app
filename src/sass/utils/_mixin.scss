@@ -1,0 +1,80 @@
+@use "../utils/variables" as *;
+@use "../utils/breakpoints" as *;
+
+
+@mixin theme($theme){
+    @if $theme=="dark"{
+        background-color: $bg-color-dark;
+        color:$very-light-gray;
+    }
+    @else{
+        background-color: $very-light-gray;
+        h1{
+            color:$very-light-gray
+        }
+        #input-box{
+            background-color: $very-light-gray;
+            color:$dark-grayish-blue
+        }
+        .ring{
+            border:2px solid $very-light-grayish-blue
+        }
+        .todo__list{
+            background-color: $very-light-gray;
+            color:$very-dark-grayish-blue;
+            font-weight: 700;
+            border-bottom: 1px solid $light-grayish-blue;
+
+        }
+
+        .checkbox__btn label{
+            border:2px solid $very-light-grayish-blue
+        }
+        .checkbox__btn label:hover{
+            border:2px solid $light-grayish-blue
+
+        }
+        footer{
+            background-color: $very-light-gray;
+        
+            }
+        .footer{
+            background-color: $very-light-gray;
+            box-shadow: rgb(177, 173, 173)  0px 22px 70px 4px;
+
+
+        }
+        .todo__wrapper{
+            box-shadow: rgb(177, 173, 173) 0px 22px 70px 4px;
+
+        }
+        
+
+    }
+}
+
+@mixin  flexDisplay($direction) {
+    display: flex;
+    flex-direction: $direction;
+};
+// @media (prefers-color-scheme:light){
+//     body{
+//         background-color:white;
+//         color:black;
+//     }
+// }
+
+// @media (prefers-color-scheme:dark){
+//     body{
+//         background-color: black;
+//         color:white
+//     }
+// }
+
+
+@mixin greyOpacText{
+    opacity: 70%;
+    color:$dark-grayish-blue;
+    font-weight: 300;
+    cursor:pointer;
+}

@@ -1,0 +1,38 @@
+@use "./variables" as *;
+
+// Small devices
+@mixin sm {
+  @media (min-width:#{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// medium devices
+@mixin md {
+  @media (min-width:#{$screen-md-min}) {
+    @content;
+  }
+} ;
+
+
+// Large devices
+@mixin lg {
+    @media (min-width:#{$screen-lg-min}){
+        @content;
+    }
+};
+
+// custom devices
+@mixin cd($screen){
+    @media(min-width:$screen){
+        @content;
+    }
+}
+
+
+// extra large device
+@mixin xl{
+    @media (min-width:#{$screen-xl-min}){
+        @content;
+    }
+}

@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Todo from "./components/Todo";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 function App() {
+  const themes = useSelector((state) => state.theme.theme);
+
+  useState(() => {
+  }, [themes]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className={`container ${themes}`}>
+      <div className="track-1">
+        <Todo />
+      </div>
+      <div className="track-2">
+        {/* <button onClick={darkTheme}>dark</button>
+      <button onClick={lightTheme}>light</button> */}
+      </div>
+    </main>
   );
 }
 
