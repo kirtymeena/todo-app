@@ -17,8 +17,8 @@ const TodoList = () => {
   const [edit, setEdit] = useState("");
   const [editedTodo, setEditedTodo] = useState("");
   const [_id, setId] = useState();
-  const dragItem = useRef();
-  const dragOver = useRef()
+  // const dragItem = useRef();
+  // const dragOver = useRef()
   const itemLeft = useSelector((state) => state.todo.items);
   const dispatch = useDispatch();
 
