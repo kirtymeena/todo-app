@@ -28,6 +28,8 @@ const todoListSlice = createSlice({
         (todo) => todo.completed === true
       );
       state.completed = completedList;
+     
+     
 
       // active todo
       const activeList = state.list.filter((todo) => todo.completed === false);
@@ -36,8 +38,9 @@ const todoListSlice = createSlice({
 
     deleteTodo: (state, action) => {
       state.list = state.list.filter((t) => t.id !== action.payload.id);
-
       state.items--;
+
+      
     },
 
     editTodo:(state,action)=>{

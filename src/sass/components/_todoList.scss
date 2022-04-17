@@ -90,10 +90,12 @@ input[type="checkbox"] {
 }
 
 .checkbox__btn:hover label {
-  border: 2px solid;
-  border-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  border-image-slice: 5;
-  // transform: translate(-50%, -50%) rotate(315deg);
+  border: 2px solid; 
+  
+  border-image:linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border-image-slice: 1;
+
+
 }
 
 .checkbox__btn label:after {
@@ -179,6 +181,8 @@ input[type="checkbox"] {
 
 .footer1 {
   @include flexDisplay(row);
+  
+  
   font-size: 13px;
   color: $dark-grayish-blue;
   gap: 11rem;
@@ -192,7 +196,9 @@ input[type="checkbox"] {
   @include lg {
     gap: 7rem;
     .middle__items {
+      
       @include flexDisplay(row);
+     
       flex-wrap: wrap;
       gap: 1rem;
       color: $dark-grayish-blue;

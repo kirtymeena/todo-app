@@ -53,7 +53,8 @@
             box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 
             p:hover{
-                color:$very-dark-grayish-blue;opacity: 100%;
+                color:$very-dark-grayish-blue;
+                opacity: 100%;
             }
         }
         .isEditing{
@@ -66,6 +67,17 @@
             font-family: $text-font;
             color:$very-dark-grayish-blue;
             font-weight: 700;
+          }
+          .footer1{
+          @include lg{
+          .middle__items{
+              
+              p:hover{
+                color:$very-dark-grayish-blue;
+                font-weight: 700;
+              }
+            }
+        }
           }
         
 
