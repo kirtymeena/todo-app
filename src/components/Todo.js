@@ -25,9 +25,11 @@ const Todo = () => {
 
   useEffect(() => {
     if (keyPressed === true) {
+      console.log(keyPressed)
       setTodo({ todo: "" ,completed:false});
+      
     }
-  }, [keyPressed, todo]);
+  }, [keyPressed, todo.todo]);
   return (
     <div className="card">
       <div className="card__header">
@@ -78,7 +80,7 @@ const Todo = () => {
               type="text"
               id="input-box"
               placeholder="Create a new todo..."
-              onKeyPress={(e) =>
+              onKeyDown={(e) =>
                 e.key === "Enter" ? setKeyPressed(true) : setKeyPressed(false)
               }
             />
