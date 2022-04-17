@@ -167,7 +167,7 @@ const TodoList = () => {
           {/* large screen footer */}
           <div className="footer1">
             <div className="item1">
-              <p>{completedTodo!==null && Math.abs(completedTodo.length - itemLeft)} items left</p>
+              <p>{completedTodo!==null? Math.abs(completedTodo.length - itemLeft):itemLeft} items left</p>
             </div>
             <div className="middle__items">
               <div>
