@@ -2,71 +2,65 @@
 
 I recently started learning SASS and redux toolkit so to test how much I was actually learning I decided to make a simple To-Do app in react, Sass and redux toolkit.
 
-Take a look at live project here [https://kirty-todo-app.netlify.app/]. 👈
+<strong> Take a look at live project [here](https://kirty-todo-app.netlify.app/)</strong> 👈
 
-## Available Scripts
+## Screenshots
 
-In the project directory, you can run:
+<strong>Dark theme</strong>🌚
 
-### `npm start`
+![dark_2_tick](https://user-images.githubusercontent.com/40634061/163808709-8751cbd4-3a8c-42a5-be79-a8157e004a48.PNG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<strong>Light theme</strong>🌞
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![light_1](https://user-images.githubusercontent.com/40634061/163808798-3850fe08-e542-4210-91a9-7d66e28875e4.PNG)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## What did I implement in this project
 
-### `npm run build`
+As my very first redux toolkit and sass project, I decided to keep it simple with basic CURD operations.<br/>
+I also wanted to try implementing drag and drop feature but I couldn't so I'll be working on that soon.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### User stories
+ <ul>
+  <li>As a user, I want to be able to create a new todo item.</li>
+  <li>As a user, I want to be able to check off completed items.</li>
+  <li>As a user, I want to be able to delete items, so I can remove unwanted tasks</li>
+  <li>As a user, I want to see all the todo items I have added and filter on completed and active todos</li>
+</ul>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Defining features
+Based on previously defined user stories, I proceeded with the implementation of following features.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<ul>
+  <li>Creation of to-do items.</li>
+  <li>completion of to-do items.</li>
+  <li>Deletion of to-do items.</li>
+  <li>Light and dark theme.</li>
+  <li>Edit to-do items.</li>
+  <li>filtering on completed and active to-do items.</li>
+  <li>Responsive design (mobile-first).</li>
+  </ul>
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Planned features
+<ul>
+  <li>re-odering of list using drag and drop.</li>
+  <li>storing user data on user device.</li>
+</ul>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Lessons learned
+Thanks to this project I got to know how much work an application like this one takes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I learned about HTML semantics and their importance, though I didn't use much of HTML semantics still I read about it and will be using it in future projects.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+I used sass in this project but still I can see the repeation of sass code where I could have created a mixin and reused it(will take care of this in next projects).
 
-## Learn More
+I have already used redux in other project and I feel like redux toolkit reduces the time and effort of writing code.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project has a lot of room for improvement but I would just leave it at that and continue with other project and make sure that I don't repeat same mistakes that I did in this one.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I am open to any suggestions about this project.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
