@@ -93,10 +93,10 @@ const Todo = () => {
         </div>
         <div className="bottom__container">
           <div className="bottom__wrapper">
-           
-            <div className="bottom__text">
+          
+            {/* <div className="bottom__text">
               <p>Drag and drop to reorder list</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
