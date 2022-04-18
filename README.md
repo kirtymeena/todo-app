@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Why did I choose to build this project?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I recently started learning SASS and redux toolkit so to test how much I was actually learning I decided to make a simple To-Do app in react, Sass and redux toolkit.
+
+Take a look at live project here [https://kirty-todo-app.netlify.app/]. 👈
 
 ## Available Scripts
 
