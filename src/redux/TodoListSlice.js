@@ -38,6 +38,8 @@ const todoListSlice = createSlice({
 
     deleteTodo: (state, action) => {
       state.list = state.list.filter((t) => t.id !== action.payload.id);
+      state.completed = state.completed.filter(t=>t.id!==action.payload.id)
+      state.active = state.active.filter(t=>t.id!==action.payload.id)
       state.items--;
 
       

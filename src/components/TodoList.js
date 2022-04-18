@@ -6,7 +6,7 @@ import { MdModeEdit } from "react-icons/md";
 const TodoList = () => {
   const todoItems = useSelector((state) => state.todo.list);
   const completedTodo = useSelector((state) => state.todo.completed);
-  const ActiveTodo = useSelector((state) => state.todo.active);
+  let ActiveTodo = useSelector((state) => state.todo.active);
   const [todos, setTodo] = useState();
   const [links, setLinks] = useState({
     active: false,
@@ -71,12 +71,14 @@ const TodoList = () => {
 
 
   useEffect(() => {
-    console.log("list", todos);
+    if (ActiveTodo===null){
+      ActiveTodo=todoItems
+    }
     if (links.active === false && links.completed === false) {
       setTodo(todoItems);
-    } else if (links.active === true && links.completed === false) {
+    }  if (links.active === true && links.completed === false) {
       setTodo(ActiveTodo);
-    } else if (links.active === false && links.completed === true) {
+    } if (links.active === false && links.completed === true) {
       setTodo(completedTodo);
     }
   }, [todoItems, todos, links, completedTodo, ActiveTodo, edit]);
@@ -167,7 +169,7 @@ const TodoList = () => {
           {/* large screen footer */}
           <div className="footer1">
             <div className="item1">
-              <p>{completedTodo!==null? Math.abs(completedTodo.length - itemLeft):itemLeft} items left</p>
+              <p>{itemLeft} items left</p>
             </div>
             <div className="middle__items">
               <div>
