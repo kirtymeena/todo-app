@@ -28,8 +28,6 @@ const todoListSlice = createSlice({
         (todo) => todo.completed === true
       );
       state.completed = completedList;
-     
-     
 
       // active todo
       const activeList = state.list.filter((todo) => todo.completed === false);
@@ -38,19 +36,27 @@ const todoListSlice = createSlice({
 
     deleteTodo: (state, action) => {
       state.list = state.list.filter((t) => t.id !== action.payload.id);
-      state.completed = state.completed.filter(t=>t.id!==action.payload.id)
-      state.active = state.active.filter(t=>t.id!==action.payload.id)
+      state.completed = state.completed.filter(
+        (t) => t.id !== action.payload.id
+      );
+      state.active = state.active.filter((t) => t.id !== action.payload.id);
       state.items--;
-
-      
     },
 
-    editTodo:(state,action)=>{
-      const index = state.list.findIndex(t=>t.id===action.payload.id);
+    editTodo: (state, action) => {
+      // list
+      const index = state.list.findIndex((t) => t.id === action.payload.id);
       state.list[index].todo = action.payload.todo;
-    }
+
+      // completed list
+      const index2 = state.completed.findIndex(
+        (t) => t.id === action.payload.id
+      );
+      state.completed[index2].todo = action.payload.todo;
+    },
   },
 });
 
-export const { addTodo, toggleComplete, deleteTodo,editTodo } = todoListSlice.actions;
+export const { addTodo, toggleComplete, deleteTodo, editTodo } =
+  todoListSlice.actions;
 export default todoListSlice.reducer;

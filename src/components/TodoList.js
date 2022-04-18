@@ -1,4 +1,4 @@
-import React, { useState,useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo, editTodo, toggleComplete } from "../redux/TodoListSlice";
 import { MdModeEdit } from "react-icons/md";
@@ -18,7 +18,7 @@ const TodoList = () => {
   const [editedTodo, setEditedTodo] = useState("");
   const [_id, setId] = useState();
   const dragItem = useRef();
-  const dragOver = useRef()
+  const dragOver = useRef();
   const itemLeft = useSelector((state) => state.todo.items);
   const dispatch = useDispatch();
 
@@ -45,40 +45,41 @@ const TodoList = () => {
     setId(id);
   };
 
-
   // drag feature
-  const dragStart = (e,pos)=>{
+  const dragStart = (e, pos) => {
     dragItem.current = pos;
-    console.log(e.target)
-  }
+    console.log(e.target);
+  };
 
-  const dragEnter = (e,pos)=>{
+  const dragEnter = (e, pos) => {
     dragOver.current = pos;
-    console.log(e.target.innerHTML)
-  }
+    console.log(e.target.innerHTML);
+  };
 
   // reshuffle the list
-  const drop = (e)=>{
+  const drop = (e) => {
     const copyListItems = [...todos];
     const dragItemContent = copyListItems[dragItem.current];
-    copyListItems.splice(dragItem.current,1);
-    copyListItems.splice(dragOver.current,0,dragItemContent);
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOver.current, 0, dragItemContent);
     dragItem.current = null;
     dragOver.current = null;
-    setTodo(copyListItems)
-
-  }
-
+    setTodo(copyListItems);
+    console.log(todos);
+  };
 
   useEffect(() => {
-    if (ActiveTodo===null){
-      ActiveTodo=todoItems
-    }
     if (links.active === false && links.completed === false) {
       setTodo(todoItems);
-    }  if (links.active === true && links.completed === false) {
-      setTodo(ActiveTodo);
-    } if (links.active === false && links.completed === true) {
+    }
+    if (links.active === true && links.completed === false) {
+      if (ActiveTodo === null) {
+        setTodo(todoItems);
+      } else {
+        setTodo(ActiveTodo);
+      }
+    }
+    if (links.active === false && links.completed === true) {
       setTodo(completedTodo);
     }
   }, [todoItems, todos, links, completedTodo, ActiveTodo, edit]);
@@ -98,9 +99,9 @@ const TodoList = () => {
                   key={t.id}
                   draggable
                   onDragStart={(e) => dragStart(e, index)}
-                  onDragEnter={e=>dragEnter(e,index)}
+                  onDragEnter={(e) => dragEnter(e, index)}
                   onDragEnd={drop}
-                  onDragOver={e=>e.preventDefault()}
+                  onDragOver={(e) => e.preventDefault()}
                 >
                   {/* checkbox */}
                   <div className="checkbox__btn">
