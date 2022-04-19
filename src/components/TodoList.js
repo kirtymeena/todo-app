@@ -5,8 +5,7 @@ import { MdModeEdit } from "react-icons/md";
 
 const TodoList = () => {
   const todoItems = useSelector((state) => state.todo.list);
-  const completedTodo = useSelector((state) => state.todo.completed);
-  let ActiveTodo = useSelector((state) => state.todo.active);
+  // const completedTodo = useSelector((state) => state.todo.completed);
   const [todos, setTodo] = useState();
   const [links, setLinks] = useState({
     active: false,
@@ -73,16 +72,13 @@ const TodoList = () => {
       setTodo(todoItems);
     }
     if (links.active === true && links.completed === false) {
-      if (ActiveTodo === null) {
-        setTodo(todoItems);
-      } else {
-        setTodo(ActiveTodo);
-      }
+      setTodo(todoItems.filter((todo) => todo.completed !== true));
     }
     if (links.active === false && links.completed === true) {
-      setTodo(completedTodo);
+      // setTodo(completedTodo);
+      setTodo(todoItems.filter((todo) => todo.completed !== false));
     }
-  }, [todoItems, todos, links, completedTodo, ActiveTodo, edit]);
+  }, [todoItems, todos, links, edit]);
 
   return (
     <div className="todo__card">
@@ -139,7 +135,7 @@ const TodoList = () => {
                     </div>
                   </div>
                   <div className="cross">
-                    {editIcon ? (
+                    {t.completed !== true && editIcon ? (
                       <MdModeEdit
                         size={20}
                         style={{ color: "#dea40d" }}
@@ -189,7 +185,10 @@ const TodoList = () => {
               <div>
                 <p
                   onClick={() => {
-                    setTodo(ActiveTodo);
+                    setTodo(
+                      todoItems.filter((todo) => todo.completed !== true)
+                    );
+
                     setLinks({ active: true, completed: false, all: false });
                   }}
                   style={{
@@ -203,7 +202,9 @@ const TodoList = () => {
                 <p
                   onClick={() => {
                     setLinks({ active: false, completed: true, all: false });
-                    setTodo(completedTodo);
+                    setTodo(
+                      todoItems.filter((todo) => todo.completed !== false)
+                    );
                   }}
                   style={{
                     color: links.completed === true ? "hsl(220, 98%, 61%)" : "",
@@ -238,7 +239,7 @@ const TodoList = () => {
         <div>
           <p
             onClick={() => {
-              setTodo(ActiveTodo);
+              setTodo(todoItems.filter((todo) => todo.completed !== true));
               setLinks({ active: true, completed: false, all: false });
             }}
             style={{
@@ -252,7 +253,7 @@ const TodoList = () => {
           <p
             onClick={() => {
               setLinks({ active: false, completed: true, all: false });
-              setTodo(completedTodo);
+              setTodo(todoItems.filter((todo) => todo.completed !== false));
             }}
             style={{
               color: links.completed === true ? "hsl(220, 98%, 61%)" : "",

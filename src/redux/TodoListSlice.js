@@ -4,8 +4,6 @@ const todoListSlice = createSlice({
   name: "todoList",
   initialState: {
     list: [],
-    completed: null,
-    active: null,
     items: 0,
   },
   reducers: {
@@ -22,41 +20,25 @@ const todoListSlice = createSlice({
       // all todo
       const index = state.list.findIndex((t) => t.id === action.payload.id);
       state.list[index].completed = action.payload.completed;
-
-      // completed todo
-      const completedList = state.list.filter(
-        (todo) => todo.completed === true
-      );
-      state.completed = completedList;
-
-      // active todo
-      const activeList = state.list.filter((todo) => todo.completed === false);
-      state.active = activeList;
     },
 
     deleteTodo: (state, action) => {
       state.list = state.list.filter((t) => t.id !== action.payload.id);
-      state.completed = state.completed.filter(
-        (t) => t.id !== action.payload.id
-      );
-      state.active = state.active.filter((t) => t.id !== action.payload.id);
       state.items--;
     },
 
     editTodo: (state, action) => {
-      // list
       const index = state.list.findIndex((t) => t.id === action.payload.id);
       state.list[index].todo = action.payload.todo;
-
-      // completed list
-      const index2 = state.completed.findIndex(
-        (t) => t.id === action.payload.id
-      );
-      state.completed[index2].todo = action.payload.todo;
     },
   },
 });
 
-export const { addTodo, toggleComplete, deleteTodo, editTodo } =
-  todoListSlice.actions;
+export const {
+  addTodo,
+  toggleComplete,
+  deleteTodo,
+  editTodo,
+} = todoListSlice.actions;
+
 export default todoListSlice.reducer;
