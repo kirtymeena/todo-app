@@ -90,12 +90,10 @@ input[type="checkbox"] {
 }
 
 .checkbox__btn:hover label {
-  border: 2px solid; 
-  
-  border-image:linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: 2px solid;
+
+  border-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border-image-slice: 1;
-
-
 }
 
 .checkbox__btn label:after {
@@ -181,13 +179,10 @@ input[type="checkbox"] {
 
 .footer1 {
   @include flexDisplay(row);
-  
-  
+
   font-size: 13px;
   color: $dark-grayish-blue;
   gap: 10rem;
-
-  
 
   .middle__items {
     display: none;
@@ -196,9 +191,8 @@ input[type="checkbox"] {
   @include lg {
     gap: 7rem;
     .middle__items {
-      
       @include flexDisplay(row);
-     
+
       flex-wrap: wrap;
       gap: 1rem;
       color: $dark-grayish-blue;
@@ -217,7 +211,7 @@ input[type="checkbox"] {
 
 .footer__mobile {
   @include flexDisplay(row);
-  
+
   font-size: 13px;
   color: $dark-grayish-blue;
   font-family: $text-font;
@@ -241,6 +235,56 @@ input[type="checkbox"] {
   .footer__mobile {
     display: none;
   }
+}
+
+.all {
+  .tool-tip-all {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    font-size: 14px;
+    padding: 0.3rem;
+    margin-top: 1.2rem;
+    color: ivory;
+  }
+}
+
+.all:hover .tool-tip-all {
+  visibility: visible;
+  opacity: 50%;
+}
+
+.active {
+  .tool-tip-active {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    font-size: 14px;
+    padding: 0.3rem;
+    margin-top: 1.2rem;
+    color: ivory;
+  }
+}
+
+.active:hover .tool-tip-active {
+  visibility: visible;
+  opacity: 50%;
+}
+.completed {
+  .tool-tip-completed {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    font-size: 14px;
+    padding: 0.3rem;
+    margin-top: 1.2rem;
+    color: ivory;
+  }
+}
+
+.completed:hover .tool-tip-completed {
+  visibility: visible;
+  opacity: 50%;
 }
 
 // DRAGABLE ITEMS

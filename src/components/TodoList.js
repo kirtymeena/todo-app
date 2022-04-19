@@ -169,7 +169,7 @@ const TodoList = () => {
               <p>{itemLeft} items left</p>
             </div>
             <div className="middle__items">
-              <div>
+              <div className="all">
                 <p
                   onClick={() => {
                     setTodo(todoItems);
@@ -181,8 +181,12 @@ const TodoList = () => {
                 >
                   All
                 </p>
+                <div className="tool-tip-all">
+                  {todos!==undefined && todos.length} items
+
+                </div>
               </div>
-              <div>
+              <div className="active">
                 <p
                   onClick={() => {
                     setTodo(
@@ -197,8 +201,12 @@ const TodoList = () => {
                 >
                   Active
                 </p>
+                <div className="tool-tip-active">
+                  {todos!==undefined && todos.filter(todo=>todo.completed!==true).length} items
+
+                </div>
               </div>
-              <div>
+              <div className="completed">
                 <p
                   onClick={() => {
                     setLinks({ active: false, completed: true, all: false });
@@ -212,6 +220,11 @@ const TodoList = () => {
                 >
                   Completed
                 </p>
+
+                <div className="tool-tip-completed">
+                  {todos!==undefined && todos.filter(todo=>todo.completed!==false).length} items
+
+                </div>
               </div>
             </div>
 
