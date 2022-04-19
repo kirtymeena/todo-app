@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./themeSlice";
 import TodoListReducer from "./TodoListSlice";
 import { combineReducers } from "redux";
