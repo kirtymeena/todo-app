@@ -45,7 +45,7 @@ Based on previously defined user stories, I proceeded with the implementation of
 ### Planned features
 <ul>
   <li>re-odering of list using drag and drop.</li>
-  <li>storing user data on user device.</li>
+  <li>storing user data on user device.(this feature have been completed using redux persist)</li>
 </ul>
 
 ## Lessons learned
